@@ -6,7 +6,7 @@
 ### Стек технологий:
 Для этого предполагается использование следующий стек технологий:
 * > Linux (Ubuntu)
-* > Python, pip, numpy, PyTorch и т.д.
+* > Python, pip, numpy, PyTorch, Pathlib и т.д.
 * > OpenCV 
 * > Machine learning or Deep learning 
 * > Jupyter lab / Jupyter Notebook
