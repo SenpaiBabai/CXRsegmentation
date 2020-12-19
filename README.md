@@ -9,4 +9,5 @@
 * > Python, pip, numpy, PyTorch и т.д.
 * > OpenCV 
 * > Machine learning or Deep learning 
+* > Jupyter lab / Jupyter Notebook
 * > To be added
