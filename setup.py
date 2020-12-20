@@ -5,9 +5,9 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="CXRsegmentation", 
+    name="SiriusNauka16", 
     version="0.0.1",
-    author="CXR_team",
+    author="Sirius_nauka16",
     author_email="dkhasanov76@gmail.com",
     description="Проект по сегментации легких.",
     long_description=long_description,
@@ -15,14 +15,14 @@ setuptools.setup(
     url="https://github.com/SenpaiBabai/CXRsegmentation",
     packages = find_packages(exclude=('', 'CXRsegmentation')),
     package_data = {
-        'testing': [
-            'Testing.py'
+        'CXRsegmentation': [
+            'model'
         ]
     },
     install_requires=[
         "numpy==1.19.4",
-        "torchvision==0.8.1+cu101",
-        "torch==1.7.0+cu101",
+        "torchvision==0.8.1",
+        "torch==1.7.0",
         "opencv-python==4.1.2.30",
         "matplotlib==3.2.2",
         "imageio==2.4.1",
@@ -32,11 +32,10 @@ setuptools.setup(
         "sklearn==0.0",
         "pathlib==1.0.1",
         ],
-    packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: Apache License, Version 2.0",
-        "Operating System :: Windows 10 / Linux (Ubuntu)",
+        "License :: OSI Approved :: Apache Software License",
+        "Operating System :: OS Independent",
     ],
     python_requires='>=3.6.9',
 )
