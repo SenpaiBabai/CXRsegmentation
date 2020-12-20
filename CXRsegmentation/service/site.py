@@ -27,10 +27,9 @@ def main():
     
     # FILE UPLOAD
     image_file = st.file_uploader("Upload Image",type=['png','jpeg','jpg','bmp'])
-    
     if image_file is not None:  
         # DATA LOAD
-        glob = userdata.get_session(load_image(image_file))
+        glob = userdata.get_session(image_file.id)
 
         # ORIGINAL IMAGE VIEW
         if glob['image'] is None:
@@ -39,11 +38,14 @@ def main():
         #'GLOBALS: ', glob
         column1, column2 = st.beta_columns(2)
         with column1:
-            st.image(glob['image'], width=300, height=300)
+            st.image(glob['image'], width=280, height=280)
 
         # SIDEBAR
-        mode = st.sidebar.selectbox('Mode', ['NONE', 'Create custom mask', 'NONE', 'NONE'])
-        if mode == 'Create custom mask':
+        mode = st.sidebar.selectbox('Mode', ['Model prediction', 'Create custom mask', 'NONE', 'NONE'])
+        if mode == 'Model prediction':
+            with st.spinner(text='In progress'):
+                pass
+        elif mode == 'Create custom mask':
             threshold = st.sidebar.slider('Threshold', min_value=0, max_value=255)
             DEIters = st.sidebar.number_input('D&E iters', min_value=0, max_value=1000, value=0)
             DilOrEro = st.sidebar.selectbox('First action', ['Dilation', 'Erosion']) == 'Dilation'
@@ -55,10 +57,10 @@ def main():
                 glob['create_mask_image'] = image
             if glob['create_mask_image'] is not None:
                 with column2:
-                    st.image(glob['create_mask_image'], width=300, height=300)
+                    st.image(glob['create_mask_image'], width=280, height=280)
         
         # DATA SAVE
-        userdata.save_session(load_image(image_file), glob)
+        userdata.save_session(image_file.id, glob)
 
 
 if __name__ == "__main__":

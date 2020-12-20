@@ -15,13 +15,12 @@ DATA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'data')
 
 
 @st.cache(allow_output_mutation=True)
-def _gen_session_name(img):
-    data = ''.join(map(str, list(np.array(img).flatten())))
-    return md5(data.encode('utf-8')).hexdigest()
+def _gen_session_name(id: str):
+    return md5(id.encode('utf-8')).hexdigest() + '.cache'
 
 
-def get_session(image: np.ndarray) -> dict:
-    file = os.path.join(DATA_PATH, _gen_session_name(image))
+def get_session(id: str) -> dict:
+    file = os.path.join(DATA_PATH, _gen_session_name(id))
     if not os.path.exists(file):
         filename = Path(file)
         filename.touch(exist_ok=True)
@@ -30,6 +29,6 @@ def get_session(image: np.ndarray) -> dict:
     return glob
 
 
-def save_session(image: np.ndarray, session: dict) -> None:
-    file = os.path.join(DATA_PATH, _gen_session_name(image))
+def save_session(id: str, session: dict) -> None:
+    file = os.path.join(DATA_PATH, _gen_session_name(id))
     pickle.dump(session, open(file, 'wb'))
