@@ -35,8 +35,8 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: Apache License, Version 2.0",
-        "Operating System :: Windows 10 / Linux (Ubuntu)",
+        "License :: OSI Approved :: Apache Software License",
+        "Operating System :: OS Independent",
     ],
     python_requires='>=3.6.9',
 )
