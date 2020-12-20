@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="CXRsegmentation-SenpaiBabai", 
+    name="CXRsegmentation", 
     version="0.0.1",
     author="CXR_team",
     author_email="dkhasanov76@gmail.com",
@@ -12,6 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/SenpaiBabai/CXRsegmentation",
+    #package_data = ####
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
