@@ -1,4 +1,5 @@
 import setuptools
+from setuptools import setup, Extension, distutils, find_packages
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -12,7 +13,25 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/SenpaiBabai/CXRsegmentation",
-    #package_data = ####
+    packages = find_packages(exclude=('', 'CXRsegmentation')),
+    package_data = {
+        'testing': [
+            'Testing.py'
+        ]
+    },
+    install_requires=[
+        "numpy==1.19.4",
+        "torchvision==0.8.1+cu101",
+        "torch==1.7.0+cu101",
+        "opencv-python==4.1.2.30",
+        "matplotlib==3.2.2",
+        "imageio==2.4.1",
+        "albumentations==0.5.2",
+        "imgaug==0.4.0",
+        "segmentation-models-pytorch==0.1.3",
+        "sklearn==0.0",
+        "pathlib==1.0.1",
+        ],
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
