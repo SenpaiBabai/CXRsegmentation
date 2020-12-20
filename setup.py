@@ -13,10 +13,10 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/SenpaiBabai/CXRsegmentation",
-    packages = find_packages(exclude=('', 'CXRsegmentation')),
+    packages = find_packages(),
     package_data = {
         'CXRsegmentation': [
-            'model'
+            'trained_models/Model_lungs_heart',
         ]
     },
     install_requires=[
