@@ -21,8 +21,8 @@ setuptools.setup(
     },
     install_requires=[
         "numpy==1.19.4",
-        "torchvision==0.8.1+cu101",
-        "torch==1.7.0+cu101",
+        "torchvision==0.8.1",
+        "torch==1.7.0",
         "opencv-python==4.1.2.30",
         "matplotlib==3.2.2",
         "imageio==2.4.1",
