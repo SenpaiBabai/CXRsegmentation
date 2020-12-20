@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="SiriusCXR", 
+    name="SiriusCXRseg", 
     version="0.0.1",
     author="Sirius_nauka16",
     author_email="dkhasanov76@gmail.com",
