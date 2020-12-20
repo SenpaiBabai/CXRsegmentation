@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="SiriusCXRseg", 
+    name="SiriusNauka16", 
     version="0.0.1",
     author="Sirius_nauka16",
     author_email="dkhasanov76@gmail.com",
@@ -15,8 +15,8 @@ setuptools.setup(
     url="https://github.com/SenpaiBabai/CXRsegmentation",
     packages = find_packages(exclude=('', 'CXRsegmentation')),
     package_data = {
-        'testing': [
-            'Testing.py'
+        'CXRsegmentation': [
+            'model'
         ]
     },
     install_requires=[
