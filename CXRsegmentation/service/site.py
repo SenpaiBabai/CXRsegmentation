@@ -7,6 +7,7 @@ Author: [SIRIUS INNO TEAM](https://URL_TO_YOU))\n
 Source: [Github](https://github.com/URL_TO_CODE)
 """
 
+import segmentation
 import userdata
 import morph
 
@@ -16,8 +17,8 @@ import numpy as np
 
 
 @st.cache
-def load_image(image_file):
-    img = np.array(Image.open(image_file).convert('L'))
+def load_image(image_file, bw):
+    img = np.array(Image.open(image_file).convert('L')) if bw else np.array(Image.open(image_file))
     return img
 
 
@@ -33,18 +34,24 @@ def main():
 
         # ORIGINAL IMAGE VIEW
         if glob['image'] is None:
-            img = load_image(image_file)
-            glob['image'] = img
+            glob['uploaded_file'] = load_image(image_file, False)
+            glob['image'] = load_image(image_file, True)
         #'GLOBALS: ', glob
+        print((segmentation.predict(glob['uploaded_file'])['Heart'] > 0).astype(int))
         column1, column2 = st.beta_columns(2)
         with column1:
             st.image(glob['image'], width=280, height=280)
 
         # SIDEBAR
-        mode = st.sidebar.selectbox('Mode', ['Model prediction', 'Create custom mask', 'NONE', 'NONE'])
+        mode = st.sidebar.selectbox('Mode', ['NONE', 'Model prediction', 'Create custom mask', 'NONE', 'NONE'])
         if mode == 'Model prediction':
-            with st.spinner(text='In progress'):
-                pass
+            selected_masks = st.sidebar.multiselect('Select organs', ['Heart', 'Left lung', 'Right lung'], default=['Heart', 'Left lung', 'Right lung'])
+            with st.spinner(text='Segmentation in progress'):
+                with column2:
+                    filtered_masks = []
+                    predict = segmentation.predict(glob['uploaded_file'])
+                    for item in selected_masks: filtered_masks.append(predict[item]*255)
+                    st.image(segmentation.good_image(glob['uploaded_file'], filtered_masks).astype('uint8'), width=280, height=280)
         elif mode == 'Create custom mask':
             threshold = st.sidebar.slider('Threshold', min_value=0, max_value=255)
             DEIters = st.sidebar.number_input('D&E iters', min_value=0, max_value=1000, value=0)

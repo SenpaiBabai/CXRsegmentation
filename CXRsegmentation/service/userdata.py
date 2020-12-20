@@ -7,6 +7,7 @@ import os
 
 
 DEFAULTS = {
+    'uploaded_file': None,
     'image': None,
     'create_mask_image': None,
 }
