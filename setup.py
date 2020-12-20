@@ -32,7 +32,6 @@ setuptools.setup(
         "sklearn==0.0",
         "pathlib==1.0.1",
         ],
-    packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: Apache Software License",
