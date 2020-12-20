@@ -7,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setuptools.setup(
     name="SiriusCXR", 
     version="0.0.1",
-    author="CXR_team",
+    author="Sirius_nauka16",
     author_email="dkhasanov76@gmail.com",
     description="Проект по сегментации легких.",
     long_description=long_description,
