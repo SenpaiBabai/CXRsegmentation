@@ -23,7 +23,7 @@ def predict(img: np.ndarray) -> dict:
 
 @st.cache
 def good_image(img, list_of_masks):
-  if (len(list_of_masks) == 0) return img
+  if (len(list_of_masks) == 0): return img
   start_image = Compose([Resize(*(list_of_masks[0].shape[0], list_of_masks[0].shape[1]))])(image=img)['image']
   result = np.zeros_like(list_of_masks[0])
   for num_mask in range(len(list_of_masks)):
