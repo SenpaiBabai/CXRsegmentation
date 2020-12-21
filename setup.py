@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="SiriusN16CXRseg", 
-    version="0.0.1",
+    version="0.0.2",
     author="Sirius_nauka16",
     author_email="dkhasanov76@gmail.com",
     description="Проект по сегментации легких.",
