@@ -28,7 +28,7 @@ def good_image(img: np.ndarray, list_of_masks: list, contour: bool) -> np.ndarra
   start_image = Compose([Resize(*(list_of_masks[0].shape[0], list_of_masks[0].shape[1]))])(image=img)['image']
   result = np.zeros_like(list_of_masks[0])
   for num_mask in range(len(list_of_masks)):
-    cur_mask = one_mask_to_contour(list_of_masks[num_mask]).astype('uint8') if contour else list_of_masks[num_mask] 
+    cur_mask = one_mask_to_contour(list_of_masks[num_mask].astype('uint8')) if contour else list_of_masks[num_mask] 
     parsed = (cur_mask > 0)*(num_mask + 1)
     result[cur_mask > 0] = parsed[cur_mask > 0]
   segmap = SegmentationMapsOnImage(result.astype('uint8'), shape=start_image.shape)
