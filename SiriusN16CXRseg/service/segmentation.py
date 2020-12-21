@@ -40,5 +40,5 @@ def good_image(img: np.ndarray, list_of_masks: list, contour: bool) -> np.ndarra
 def one_mask_to_contour(mask: np.ndarray) -> np.ndarray:
   new_mask = np.zeros(mask.shape, dtype=np.uint8)
   ct, _ = cv2.findContours(mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-  cv2.drawContours(new_mask, ct, -1, 255, thickness=1)
+  cv2.drawContours(new_mask, ct, -1, 255, thickness=2)
   return new_mask
