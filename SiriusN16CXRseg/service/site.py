@@ -50,7 +50,7 @@ def main():
                     filtered_masks = []
                     predict = segmentation.predict(glob['uploaded_file'])
                     for item in selected_masks: filtered_masks.append(predict[item]*255)
-                    st.image(segmentation.good_image(glob['uploaded_file'], filtered_masks).astype('uint8'), width=280, height=280)
+                    st.image(segmentation.good_image(glob['uploaded_file'], filtered_masks, True).astype('uint8'), width=280, height=280)
         elif mode == 'Create custom mask':
             threshold = st.sidebar.slider('Threshold', min_value=0, max_value=255)
             DEIters = st.sidebar.number_input('D&E iters', min_value=0, max_value=1000, value=0)
