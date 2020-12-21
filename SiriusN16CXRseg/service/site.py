@@ -37,13 +37,12 @@ def main():
             glob['uploaded_file'] = load_image(image_file, False)
             glob['image'] = load_image(image_file, True)
         #'GLOBALS: ', glob
-        print((segmentation.predict(glob['uploaded_file'])['Heart'] > 0).astype(int))
         column1, column2 = st.beta_columns(2)
         with column1:
             st.image(glob['image'], width=280, height=280)
 
         # SIDEBAR
-        mode = st.sidebar.selectbox('Mode', ['NONE', 'Model prediction', 'Create custom mask', 'NONE', 'NONE'])
+        mode = st.sidebar.selectbox('Mode', ['Select mode', 'Model prediction', 'Create custom mask'])
         if mode == 'Model prediction':
             selected_masks = st.sidebar.multiselect('Select organs', ['Heart', 'Left lung', 'Right lung'], default=['Heart', 'Left lung', 'Right lung'])
             with st.spinner(text='Segmentation in progress'):
