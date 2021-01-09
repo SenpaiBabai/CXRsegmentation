@@ -12,6 +12,8 @@ setuptools.setup(
     description="Проект по сегментации легких.",
     long_description=long_description,
     long_description_content_type="text/markdown",
+    dependency_links=['http://github.com/SenpaiBabai/CXRsegmentation'],
+    include_package_data=True,
     url='https://pytorch.org/',
     download_url='https://github.com/SenpaiBabai/CXRsegmentation',
     packages = find_packages(),
